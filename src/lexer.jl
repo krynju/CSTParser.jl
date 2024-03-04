@@ -29,8 +29,9 @@ mutable struct Closer
 end
 Closer() = Closer(true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, -1, Symbol[])
 
+const IOT = typeof(IOBuffer().data)
 mutable struct ParseState
-    l::Lexer{Base.GenericIOBuffer{Array{UInt8,1}},RawToken}
+    l::Lexer{Base.GenericIOBuffer{IOT},RawToken}
     done::Bool
     lt::RawToken
     t::RawToken
